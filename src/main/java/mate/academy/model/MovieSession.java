@@ -8,7 +8,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.util.Locale;
 
 @Entity
 @Table(name = "movie_sessions")
@@ -64,14 +66,16 @@ public class MovieSession {
 
     @Override
     public String toString() {
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
+
+        String formattedShowTime = (showTime != null)
+                ? showTime.format(formatter)
+                : "N/A";
         return "MovieSession{"
                 + "id=" + id
                 + ", movie=" + movie
                 + ", cinemaHall=" + cinemaHall
-                + ", showTime= " + showTime.getDayOfMonth() + " "
-                + showTime.getMonth() + " "
-                + showTime.getYear() + " "
-                + showTime.getHour() + ":" + showTime.getMinute()
+                + ", showTime= " + formattedShowTime
                 + '}';
     }
 }
