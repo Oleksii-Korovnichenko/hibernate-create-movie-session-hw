@@ -8,8 +8,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import java.time.format.DateTimeFormatter;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
 @Entity
@@ -66,7 +66,8 @@ public class MovieSession {
 
     @Override
     public String toString() {
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
+        DateTimeFormatter formatter = DateTimeFormatter
+                .ofPattern("dd MMM yyyy HH:mm", Locale.ENGLISH);
 
         String formattedShowTime = (showTime != null)
                 ? showTime.format(formatter)
